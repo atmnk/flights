@@ -27,10 +27,9 @@ for (const testcase of [{
     error: "First Name must be 3 characters or more"
 }]) {
     test(`signup without ${testcase.field} should give error`, async ({ page }) => {
-
         await launchApplicationAndNavigateToSignUp(page)
         const data: any = {
-            firstName: '',
+            firstName: 'Atmaram',
             lastName: 'Naik',
             username: 'atmnk9',
             email: 'atmnk9@gmail.com',
