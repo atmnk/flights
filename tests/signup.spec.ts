@@ -21,20 +21,26 @@ test('signup with valid details', async ({ page }) => {
 
 })
 
+for (const testcase of [{
+    field: "firstName",
+    placeholder: SignUpPage.FirstNameFieldPlaceholder,
+    error: "First Name must be 3 characters or more"
+}]) {
+    test(`signup without ${testcase.field} should give error`, async ({ page }) => {
 
-test('signup without firstname should give error', async ({ page }) => {
+        await launchApplicationAndNavigateToSignUp(page)
+        const data: any = {
+            firstName: '',
+            lastName: 'Naik',
+            username: 'atmnk9',
+            email: 'atmnk9@gmail.com',
+            password: 'Test1234',
+            confirmPassword: 'Test1234'
+        }
+        data[testcase.field] = ""
+        await trySignUpWithSomeDetails(page, data)
 
-    await launchApplicationAndNavigateToSignUp(page)
+        await SignUpPage(page).verifyErrorForFieldByPlaceHolder(testcase.placeholder, testcase.error)
 
-    await trySignUpWithSomeDetails(page, {
-        firstName: '',
-        lastName: 'Naik',
-        username: 'atmnk9',
-        email: 'atmnk9@gmail.com',
-        password: 'Test1234',
-        confirmPassword: 'Test1234'
     })
-
-    await SignUpPage(page).verifyErrorForFieldByPlaceHolder(SignUpPage.FirstNameFieldPlaceholder, "First Name must be 3 characters or more")
-
-})
+}
