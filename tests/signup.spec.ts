@@ -23,7 +23,8 @@ test('signup with valid details', async ({ page }) => {
 
     await SignUpPage(page).clickSignUpButton()
 
-    await expect(page.locator(`[data-sonner-toast]`)).toHaveText("User registered successfully.")
+    await HomePage(page).verifyUserIsRegistered()
+    
 })
 
 
