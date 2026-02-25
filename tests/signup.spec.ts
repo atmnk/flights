@@ -21,7 +21,7 @@ test('signup with valid details', async ({ page }) => {
 
     await SignUpPage(page).enterFieldByName(SignUpPage.ConfirmPasswordFieldPlaceholder, 'Test1234')
 
-    await page.click(`//button[.='Sign Up']`)
+    await SignUpPage(page).clickSignUpButton()
 
     await expect(page.locator(`[data-sonner-toast]`)).toHaveText("User registered successfully.")
 })
@@ -46,7 +46,7 @@ test('signup without firstname should give error', async ({ page }) => {
 
     await SignUpPage(page).enterFieldByName(SignUpPage.ConfirmPasswordFieldPlaceholder, 'Test1234')
 
-    await page.click(`//button[.='Sign Up']`)
+    await SignUpPage(page).clickSignUpButton()
 
     expect(page.locator(`[placeholder="First Name *"] + [data-slot='form-message']`)).toHaveText("First Name must be 3 characters or more")
 })
