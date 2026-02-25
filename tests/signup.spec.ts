@@ -1,11 +1,12 @@
 import { test, expect } from '@playwright/test';
 import HomePage from '../ui/home.page';
+import LoginPage from '../ui/login.page';
 test('signup with valid details', async ({ page }) => {
     await HomePage(page).launch()
 
     await HomePage(page).navigateToLogin()
 
-    await page.click(`//a[.='Sign Up']`)
+    await LoginPage(page).navigateToSignUp()
 
     await page.fill(`[placeholder="First Name *"]`, 'Atmaram')
 
@@ -30,7 +31,7 @@ test('signup without firstname should give error', async ({ page }) => {
 
     await HomePage(page).navigateToLogin()
 
-    await page.click(`//a[.='Sign Up']`)
+    await LoginPage(page).navigateToSignUp()
 
     await page.fill(`[placeholder="First Name *"]`, '')
 
