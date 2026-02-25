@@ -25,6 +25,26 @@ for (const testcase of [{
     field: "firstName",
     placeholder: SignUpPage.FirstNameFieldPlaceholder,
     error: "First Name must be 3 characters or more"
+}, {
+    field: "lastName",
+    placeholder: SignUpPage.LastNameFieldPlaceholder,
+    error: "Last Name must be 3 characters or more"
+}, {
+    field: "username",
+    placeholder: SignUpPage.UsernameFieldPlaceholder,
+    error: "Username must be 3 characters or more"
+}, {
+    field: "email",
+    placeholder: SignUpPage.EmailFieldPlaceholder,
+    error: "Invalid email address"
+}, {
+    field: "password",
+    placeholder: SignUpPage.PasswordFieldPlaceholder,
+    error: "Min 8 characters"
+}, {
+    field: "confirmPassword",
+    placeholder: SignUpPage.ConfirmPasswordFieldPlaceholder,
+    error: "Passwords must match"
 }]) {
     test(`signup without ${testcase.field} should give error`, async ({ page }) => {
         await launchApplicationAndNavigateToSignUp(page)
