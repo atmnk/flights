@@ -1,8 +1,9 @@
 import { test, expect } from '@playwright/test';
+import HomePage from '../ui/home.page';
 test('signup with valid details', async ({ page }) => {
-    await page.goto('https://flights.sedinqa.com');
+    await HomePage(page).launch()
 
-    await page.click(`//a[.='Login']`)
+    await HomePage(page).navigateToLogin()
 
     await page.click(`//a[.='Sign Up']`)
 
@@ -25,9 +26,9 @@ test('signup with valid details', async ({ page }) => {
 
 
 test('signup without firstname should give error', async ({ page }) => {
-    await page.goto('https://flights.sedinqa.com');
+    await HomePage(page).launch()
 
-    await page.click(`//a[.='Login']`)
+    await HomePage(page).navigateToLogin()
 
     await page.click(`//a[.='Sign Up']`)
 
