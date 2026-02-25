@@ -1,4 +1,4 @@
-import { Page } from "@playwright/test";
+import { Page, expect } from "@playwright/test";
 SignUpPage.FirstNameFieldPlaceholder = "First Name *"
 SignUpPage.LastNameFieldPlaceholder = "Last Name *"
 SignUpPage.UsernameFieldPlaceholder = "Username *"
@@ -12,8 +12,11 @@ export default function SignUpPage(page: Page) {
         async enterFieldByName(placeholder: string, value: string) {
             await page.fill(fieldLocatorByPlaceholder(placeholder), value)
         },
-        async clickSignUpButton(){
+        async clickSignUpButton() {
             await page.click(SignUpPage.SignUpButtonLocator)
+        },
+        async verifyErrorForFieldByPlaceHolder(palceholder: string, error: string) {
+            await expect(page.locator(`[placeholder="${palceholder}"] + [data-slot='form-message']`)).toHaveText(error)
         }
     }
 }

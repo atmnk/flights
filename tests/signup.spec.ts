@@ -49,5 +49,6 @@ test('signup without firstname should give error', async ({ page }) => {
 
     await SignUpPage(page).clickSignUpButton()
 
-    expect(page.locator(`[placeholder="First Name *"] + [data-slot='form-message']`)).toHaveText("First Name must be 3 characters or more")
+    await SignUpPage(page).verifyErrorForFieldByPlaceHolder(SignUpPage.FirstNameFieldPlaceholder,"First Name must be 3 characters or more")
+
 })
