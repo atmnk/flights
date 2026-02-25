@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import HomePage from '../ui/home.page';
 import LoginPage from '../ui/login.page';
+import SignUpPage from '../ui/signup.page';
 test('signup with valid details', async ({ page }) => {
     await HomePage(page).launch()
 
@@ -8,17 +9,17 @@ test('signup with valid details', async ({ page }) => {
 
     await LoginPage(page).navigateToSignUp()
 
-    await page.fill(`[placeholder="First Name *"]`, 'Atmaram')
+    await SignUpPage(page).enterFieldByName(SignUpPage.FirstNameFieldPlaceholder, 'Atmaram')
 
-    await page.fill(`[placeholder="Last Name *"]`, 'Naik')
+    await SignUpPage(page).enterFieldByName(SignUpPage.LastNameFieldPlaceholder, 'Naik')
 
-    await page.fill(`[placeholder="Username *"]`, 'atmnk9')
+    await SignUpPage(page).enterFieldByName(SignUpPage.UsernameFieldPlaceholder, 'atmnk9')
 
-    await page.fill(`[placeholder="Email *"]`, 'atmnk9@gmail.com')
+    await SignUpPage(page).enterFieldByName(SignUpPage.EmailFieldPlaceholder, 'atmnk9@gmail.com')
 
-    await page.fill(`[placeholder="Password *"]`, 'Test1234')
+    await SignUpPage(page).enterFieldByName(SignUpPage.PasswordFieldPlaceholder, 'Test1234')
 
-    await page.fill(`[placeholder="Confirm Password *"]`, 'Test1234')
+    await SignUpPage(page).enterFieldByName(SignUpPage.ConfirmPasswordFieldPlaceholder, 'Test1234')
 
     await page.click(`//button[.='Sign Up']`)
 
@@ -33,17 +34,17 @@ test('signup without firstname should give error', async ({ page }) => {
 
     await LoginPage(page).navigateToSignUp()
 
-    await page.fill(`[placeholder="First Name *"]`, '')
+    await SignUpPage(page).enterFieldByName(SignUpPage.FirstNameFieldPlaceholder, '')
 
-    await page.fill(`[placeholder="Last Name *"]`, 'Naik')
+    await SignUpPage(page).enterFieldByName(SignUpPage.LastNameFieldPlaceholder, 'Naik')
 
-    await page.fill(`[placeholder="Username *"]`, 'atmnk9')
+    await SignUpPage(page).enterFieldByName(SignUpPage.UsernameFieldPlaceholder, 'atmnk9')
 
-    await page.fill(`[placeholder="Email *"]`, 'atmnk9@gmail.com')
+    await SignUpPage(page).enterFieldByName(SignUpPage.EmailFieldPlaceholder, 'atmnk9@gmail.com')
 
-    await page.fill(`[placeholder="Password *"]`, 'Test1234')
+    await SignUpPage(page).enterFieldByName(SignUpPage.PasswordFieldPlaceholder, 'Test1234')
 
-    await page.fill(`[placeholder="Confirm Password *"]`, 'Test1234')
+    await SignUpPage(page).enterFieldByName(SignUpPage.ConfirmPasswordFieldPlaceholder, 'Test1234')
 
     await page.click(`//button[.='Sign Up']`)
 
